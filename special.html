@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Special</title>
+  </head>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    img {
+      width: 500px;
+      height: 700px;
+      display: none;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    button {
+      display: flex;
+      margin-top: 20px;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #243949;
+      cursor: pointer;
+      font-size: large;
+      font-style: oblique;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    button:hover {
+      background-color: #517fa4;
+      outline: 1px solid #63a7de;
+      color: #023743;
+    }
+  </style>
+
+  <body>
+    <main>
+      <h1 id="indexs"></h1>
+      <div id="images">
+        <img src="1.jpg" />
+        <img src="2.jpg" />
+        <img src="3.JPG" />
+      </div>
+      <div>
+        <button style="margin-right: 8px" id="previous">Previous</button>
+        <button id="next">Next</button>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    const images = document.querySelectorAll("#images img");
+    let indexs = document.getElementById("indexs");
+    let btn1 = document.getElementById("previous");
+    let btn2 = document.getElementById("next");
+    console.log(images);
+
+    window.onload = function () {
+      images[0].style.display = "block";
+      indexs.innerText = "1";
+    };
+
+    btn2.addEventListener("click", function () {
+      if (images[0].style.display === "block") {
+        images[0].style.display = "none";
+        images[1].style.display = "block";
+        indexs.innerText = "2";
+      } else if (images[1].style.display === "block") {
+        {
+          images[1].style.display = "none";
+          images[2].style.display = "block";
+          indexs.innerText = "3";
+        }
+      } else if (images[2].style.display === "block") {
+        images[2].style.display = "none";
+        images[0].style.display = "block";
+        indexs.innerText = "1";
+      }
+    });
+
+    btn1.addEventListener("click", function () {
+      if (images[0].style.display === "block") {
+        images[0].style.display = "none";
+        images[2].style.display = "block";
+        indexs.innerText = "3";
+      } else if (images[2].style.display === "block") {
+        {
+          images[2].style.display = "none";
+          images[1].style.display = "block";
+          indexs.innerText = "2";
+        }
+      } else if (images[1].style.display === "block") {
+        images[1].style.display = "none";
+        images[0].style.display = "block";
+        indexs.innerText = "1";
+      }
+    });
+  </script>
+</html>
